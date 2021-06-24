@@ -1,3 +1,14 @@
+<div class="create">
+  <h1>Técnicos</h1>
+  <button
+    (click)="navigateToCreate()"
+    class="mat-elevation-z8"
+    mat-stroked-button
+    color="accent">
+    CRIAR NOVO TÉCNICO
+  </button>
+</div>
+
 <div class="mat-elevation-z8 container">
   <table mat-table [dataSource]="dataSource">
     <!-- Position Column -->
@@ -28,5 +39,5 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 
-  <mat-paginator [pageSizeOptions]="[1, 5, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
 </div>
