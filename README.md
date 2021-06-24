@@ -26,8 +26,10 @@ Construção de uma aplicação web completa, CRUD (CREATE, READ, UPDATE e DELET
 * Link: https://github.com/ezbueno/ordem-servico-backend
 
 # VISÃO TÉCNICA - FRONT-END: EM DESENVOLVIMENTO
-* Além do back-end, o front-end foi desenvolvido utilizando o Angular 11. 
+* Além do back-end, o front-end foi desenvolvido utilizando o Angular 12.
 * Arquitetura MVC do Angular.
-* Componentes visuais do Angular Material
-* Angular reactive forms
-* Navegação. 
+* Componentes visuais do Angular Material.
+* Angular reactive forms.
+* Navegação.
+* Tratamento de exceções
+* Validação de formulários

@@ -1,8 +1,9 @@
-import { Tecnico } from './../models/tecnico';
+import { Tecnico } from "./../models/tecnico";
 import { environment } from "./../../environments/environment";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { HttpClient } from '@angular/common/http';
+import { HttpClient } from "@angular/common/http";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Injectable({
   providedIn: "root",
@@ -10,10 +11,23 @@ import { HttpClient } from '@angular/common/http';
 export class TecnicoService {
   baseURL: String = environment.baseURL;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private snack: MatSnackBar) {}
 
   findAll(): Observable<Tecnico[]> {
     const URL = this.baseURL + "/tecnicos";
     return this.http.get<Tecnico[]>(URL);
+  }
+
+  create(tecnico: Tecnico): Observable<Tecnico> {
+    const URL = this.baseURL + "/tecnicos";
+    return this.http.post<Tecnico>(URL, tecnico);
+  }
+
+  message(msg: String): void {
+    this.snack.open(`${msg}`, "OK", {
+      horizontalPosition: "end",
+      verticalPosition: "top",
+      duration: 4000,
+    });
   }
 }
