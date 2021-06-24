@@ -2,18 +2,21 @@
   <h1>Novo Técnico</h1>
   <mat-form-field class="full-width">
     <mat-label>Nome</mat-label>
-    <input matInput placeholder="Ex. Linus Torvalds" />
+    <input [(ngModel)]="tecnico.nome" [formControl]="nome" required name="nome" maxlength="100" matInput placeholder="Ex. Linus Torvalds" />
+    <mat-error *ngIf="nome.invalid">{{ errorInvalidName() }}</mat-error>
   </mat-form-field>
 
   <mat-form-field class="full-width">
     <mat-label>CPF</mat-label>
-    <input matInput placeholder="Ex. 999.999.999-99" />
+    <input [(ngModel)]="tecnico.cpf" [formControl]="cpf" required name="cpf" maxlength="14" matInput placeholder="Ex. 999.999.999-99" />
+    <mat-error *ngIf="cpf.invalid">{{ errorInvalidCPF() }}</mat-error>
   </mat-form-field>
 
   <mat-form-field class="full-width">
     <mat-label>Telefone</mat-label>
-    <input matInput placeholder="Ex. (99) 99999-9999" />
+    <input [(ngModel)]="tecnico.telefone" [formControl]="telefone" required name="telefone" maxlength="15" matInput placeholder="Ex. (99) 99999-9999" />
+    <mat-error *ngIf="telefone.invalid">{{ errorInvalidPhone() }}</mat-error>
   </mat-form-field>
-  <button mat-stroked-button color="accent" (click)="create()">CRIAR</button>
+  <button mat-stroked-button color="accent" (click)="create()" [disabled]="errorInvalidName() || errorInvalidCPF() || errorInvalidPhone()">CRIAR</button>
   <button mat-stroked-button color="warn" (click)="cancel()">CANCELAR</button>
 </form>
