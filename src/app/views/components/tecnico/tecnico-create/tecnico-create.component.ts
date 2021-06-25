@@ -52,7 +52,6 @@ export class TecnicoCreateComponent implements OnInit {
     return false;
   }
 
-  
   errorInvalidCPF() {
     if (this.cpf.invalid) {
       return "O CPF deve ter entre 11 e 14 caracteres!";

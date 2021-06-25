@@ -18,9 +18,19 @@ export class TecnicoService {
     return this.http.get<Tecnico[]>(URL);
   }
 
+  findById(id: any): Observable<Tecnico> {
+    const URL = `${this.baseURL}/tecnicos/${id}`;
+    return this.http.get<Tecnico>(URL);
+  }
+
   create(tecnico: Tecnico): Observable<Tecnico> {
     const URL = this.baseURL + "/tecnicos";
     return this.http.post<Tecnico>(URL, tecnico);
+  }
+
+  update(tecnico: Tecnico): Observable<Tecnico> {
+    const URL = `${this.baseURL}/tecnicos/${tecnico.id}`;
+    return this.http.put<Tecnico>(URL, tecnico);
   }
 
   message(msg: String): void {
