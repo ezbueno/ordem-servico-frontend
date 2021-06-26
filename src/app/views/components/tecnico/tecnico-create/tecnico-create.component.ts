@@ -2,7 +2,6 @@ import { Tecnico } from "./../../../../models/tecnico";
 import { TecnicoService } from "./../../../../services/tecnico.service";
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { MatSnackBar } from "@angular/material/snack-bar";
 import { FormControl, Validators } from "@angular/forms";
 
 @Component({
