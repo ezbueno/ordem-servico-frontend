@@ -5,6 +5,6 @@ export interface OrdemServico {
   prioridade: any;
   observacoes: String;
   status: any;
-  tecnico: any;
-  cliente: any;
+  tecnicoId: any;
+  clienteId: any;
 }
