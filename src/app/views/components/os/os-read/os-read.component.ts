@@ -20,8 +20,8 @@ export class OsReadComponent implements AfterViewInit {
   displayedColumns: string[] = [
     "tecnicoId",
     "clienteId",
-    "dataAbertura",
-    "dataFechamento",
+    "abertura",
+    "fechamento",
     "prioridade",
     "status",
     "action",
@@ -71,5 +71,14 @@ export class OsReadComponent implements AfterViewInit {
 
   navigateToCreate(): void {
     this.router.navigate(["os/create"]);
+  }
+
+  prioridade(x: any) {
+    if (x == "BAIXA") {
+      return "baixa";
+    } else if (x == "MEDIA") {
+      return "media";
+    }
+    return "alta";
   }
 }
