@@ -38,6 +38,7 @@ export class OsCreateComponent implements OnInit {
 
   create(): void {
     this.osService.create(this.ordemServico).subscribe(() => {
+      this.osService.message("Ordem de Serviço criada com sucesso!");
       this.router.navigate(["os"]);
     });
   }
