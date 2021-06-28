@@ -25,9 +25,9 @@ export class OsCreateComponent implements OnInit {
   clientes: Cliente[] = [];
 
   constructor(
-    private tecnico: TecnicoService,
-    private cliente: ClienteService,
-    private service: OsService,
+    private tecnicoService: TecnicoService,
+    private clienteService: ClienteService,
+    private osService: OsService,
     private router: Router
   ) {}
 
@@ -37,8 +37,7 @@ export class OsCreateComponent implements OnInit {
   }
 
   create(): void {
-    this.service.create(this.ordemServico).subscribe(() => {
-      this.service.message("Ordem de Serviço criada com sucesso!");
+    this.osService.create(this.ordemServico).subscribe(() => {
       this.router.navigate(["os"]);
     });
   }
@@ -48,13 +47,13 @@ export class OsCreateComponent implements OnInit {
   }
 
   listarTecnicos(): void {
-    this.tecnico.findAll().subscribe((response) => {
+    this.tecnicoService.findAll().subscribe((response) => {
       this.tecnicos = response;
     });
   }
 
   listarClientes(): void {
-    this.cliente.findAll().subscribe((response) => {
+    this.clienteService.findAll().subscribe((response) => {
       this.clientes = response;
     });
   }
