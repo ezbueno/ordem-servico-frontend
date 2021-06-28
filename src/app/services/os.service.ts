@@ -29,7 +29,7 @@ export class OsService {
   }
 
   update(ordemServico: OrdemServico): Observable<OrdemServico> {
-    const URL = `${this.baseURL}/os/${ordemServico.id}`;
+    const URL = this.baseURL + "/os";
     return this.http.put<OrdemServico>(URL, ordemServico);
   }
 
