@@ -1,26 +1,25 @@
 import { ClienteService } from "./../../../../services/cliente.service";
 import { TecnicoService } from "./../../../../services/tecnico.service";
-import { OsService } from "./../../../../services/os.service";
-import { ViewChild } from "@angular/core";
-import { AfterViewInit } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
 import { OrdemServico } from "./../../../../models/os";
-import { Component } from "@angular/core";
+import { AfterViewInit, Component, ViewChild } from "@angular/core";
 import { MatPaginator } from "@angular/material/paginator";
+import { OsService } from "src/app/services/os.service";
 import { Router } from "@angular/router";
 
 @Component({
-  selector: "app-os-read",
-  templateUrl: "./os-read.component.html",
-  styleUrls: ["./os-read.component.css"],
+  selector: "app-os-closed",
+  templateUrl: "./os-closed.component.html",
+  styleUrls: ["./os-closed.component.css"],
 })
-export class OsReadComponent implements AfterViewInit {
+export class OsClosedComponent implements AfterViewInit {
   ordensServico: OrdemServico[] = [];
 
   displayedColumns: string[] = [
     "tecnico",
     "cliente",
     "abertura",
+    "fechamento",
     "prioridade",
     "status",
     "action",
@@ -43,14 +42,16 @@ export class OsReadComponent implements AfterViewInit {
   findAll(): void {
     this.service.findAll().subscribe((response) => {
       response.forEach((x) => {
-        if (x.status != "ENCERRADO") {
+        if (x.status == "ENCERRADO") {
           this.ordensServico.push(x);
         }
       });
 
       this.listarTecnicos();
       this.listarClientes();
-      this.dataSource = new MatTableDataSource<OrdemServico>(this.ordensServico);
+      this.dataSource = new MatTableDataSource<OrdemServico>(
+        this.ordensServico
+      );
       this.dataSource.paginator = this.paginator;
     });
   }
@@ -69,10 +70,6 @@ export class OsReadComponent implements AfterViewInit {
         x.clienteId = response.nome;
       });
     });
-  }
-
-  navigateToCreate(): void {
-    this.router.navigate(["os/create"]);
   }
 
   prioridade(x: any) {

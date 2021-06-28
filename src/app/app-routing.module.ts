@@ -13,6 +13,7 @@ import { TecnicoReadComponent } from "./views/components/tecnico/tecnico-read/te
 import { HomeComponent } from "./views/components/home/home.component";
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { OsClosedComponent } from "./views/components/os/os-closed/os-closed.component";
 
 const routes: Routes = [
   {
@@ -66,6 +67,10 @@ const routes: Routes = [
   {
     path: "os/view/:id",
     component: OsViewComponent,
+  },
+  {
+    path: "os/closed",
+    component: OsClosedComponent,
   },
 ];
 
