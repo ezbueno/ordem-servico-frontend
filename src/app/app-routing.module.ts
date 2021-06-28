@@ -1,3 +1,4 @@
+import { OsViewComponent } from "./views/components/os/os-view/os-view.component";
 import { OsUpdateComponent } from "./views/components/os/os-update/os-update.component";
 import { OsCreateComponent } from "./views/components/os/os-create/os-create.component";
 import { OsReadComponent } from "./views/components/os/os-read/os-read.component";
@@ -61,6 +62,10 @@ const routes: Routes = [
   {
     path: "os/update/:id",
     component: OsUpdateComponent,
+  },
+  {
+    path: "os/view/:id",
+    component: OsViewComponent,
   },
 ];
 
