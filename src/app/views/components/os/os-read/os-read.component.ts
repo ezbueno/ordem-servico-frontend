@@ -18,8 +18,8 @@ export class OsReadComponent implements AfterViewInit {
   ordensServico: OrdemServico[] = [];
 
   displayedColumns: string[] = [
-    "tecnicoId",
-    "clienteId",
+    "tecnico",
+    "cliente",
     "abertura",
     "fechamento",
     "prioridade",
@@ -33,8 +33,8 @@ export class OsReadComponent implements AfterViewInit {
   constructor(
     private service: OsService,
     private router: Router,
-    private tecnico: TecnicoService,
-    private cliente: ClienteService
+    private tecnicoService: TecnicoService,
+    private clienteService: ClienteService
   ) {}
 
   ngAfterViewInit() {
@@ -44,26 +44,24 @@ export class OsReadComponent implements AfterViewInit {
   findAll(): void {
     this.service.findAll().subscribe((response) => {
       this.ordensServico = response;
-      this.listarTecnico();
-      this.listarCliente();
-      this.dataSource = new MatTableDataSource<OrdemServico>(
-        this.ordensServico
-      );
+      this.listarTecnicos();
+      this.listarClientes();
+      this.dataSource = new MatTableDataSource<OrdemServico>(this.ordensServico);
       this.dataSource.paginator = this.paginator;
     });
   }
 
-  listarTecnico(): void {
+  listarTecnicos(): void {
     this.ordensServico.forEach((x) => {
-      this.tecnico.findById(x.tecnicoId).subscribe((response) => {
+      this.tecnicoService.findById(x.tecnicoId).subscribe((response) => {
         x.tecnicoId = response.nome;
       });
     });
   }
 
-  listarCliente(): void {
+  listarClientes(): void {
     this.ordensServico.forEach((x) => {
-      this.cliente.findById(x.clienteId).subscribe((response) => {
+      this.clienteService.findById(x.clienteId).subscribe((response) => {
         x.clienteId = response.nome;
       });
     });
