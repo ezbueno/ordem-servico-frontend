@@ -35,4 +35,3 @@
 * Navegação.
 * Tratamento de exceções.
 * Validação de formulários.
-* Link: https://github.com/ezbueno/ordem-servico-frontend
